@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+
+  "name": "One-click Kittens",
+  "description": "This extension demonstrates a browser action with kittens.",
+  "version": "1.0",
+
+  "permissions": [
+    "tabs","http://*/*","https://*/*"
+  ],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  //这一段代码的作用是:在满足matches中指定的url链接以后,自动执行js指定的脚本文件
+  "content_scripts": [{//定义自动加载的内容
+       "matches": ["http://*/*","https://*/*"], //满足什么样的条件执行该插件
+       "js": ["test.js"],   //执行的js脚本
+       "run_at": "document_end"// 定义document开始加载时执行该脚本,run_at有算个值: document_start | document_idel | document_end  
+      // "all_frames": true
+  }] 
+}
